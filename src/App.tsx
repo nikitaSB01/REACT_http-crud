@@ -18,7 +18,7 @@ class App extends React.Component<object, AppState> {
 
   // выполняет HTTP GET запрос к http://localhost:7070/notes для получения всех заметок.
   fetchNotes = () => {
-    fetch("http://localhost:7070/notes")
+    fetch("https://react-http-crud-back.onrender.com/notes")
       .then((response) => response.json())
       .then((data) => this.setState({ notes: data }))
       .catch((error) => console.error("Error fetching notes:", error));
@@ -26,7 +26,7 @@ class App extends React.Component<object, AppState> {
 
   //выполняет HTTP POST запрос для добавления новой заметки.
   handleAddNote = (content: string) => {
-    fetch("http://localhost:7070/notes", {
+    fetch("https://react-http-crud-back.onrender.com/notes", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -39,7 +39,7 @@ class App extends React.Component<object, AppState> {
 
   //выполняет HTTP DELETE запрос для удаления заметки.
   handleDeleteNote = (id: number) => {
-    fetch(`http://localhost:7070/notes/${id}`, {
+    fetch(`https://react-http-crud-back.onrender.com/notes/${id}`, {
       method: "DELETE",
     })
       .then(() => this.fetchNotes())
